@@ -3,7 +3,7 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-
+<div>
     {% if field|is_checkbox %}
        {{ field|add_error_class:"is-invalid-input" }}
        {% if field.help_text %}
@@ -34,5 +34,5 @@
             <small>{{ field.help_text|safe }}</small>
         {% endif %}
     {% endif %}
-
+</div>
 {% endif %}
