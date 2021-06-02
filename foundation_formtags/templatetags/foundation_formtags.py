@@ -4,7 +4,7 @@ import types
 from django import template
 from django.conf import settings
 from django.template.loader import get_template
-from django.forms import CheckboxInput
+from django.forms import (CheckboxInput, RadioSelect,)
 register = template.Library()
 
 
@@ -31,13 +31,14 @@ def render_field(field):
 
 @register.filter(name='is_checkbox')
 def is_checkbox(field):
-    return field.field.widget.__class__.__name__ == CheckboxInput(
-    ).__class__.__name__
+    return isinstance(field.field.widget, CheckboxInput)
+    #return field.field.widget.__class__.__name__ == CheckboxInput(
+    #).__class__.__name__
 
 
 @register.filter(name='is_radioselect')
 def is_radioselect(field):
-    return isinstance(field.field.widget, forms.RadioSelect)
+    return isinstance(field.field.widget, RadioSelect)
 
 
 def silence_without_field(fn):
