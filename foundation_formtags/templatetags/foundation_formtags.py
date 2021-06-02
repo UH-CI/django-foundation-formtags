@@ -35,6 +35,11 @@ def is_checkbox(field):
     ).__class__.__name__
 
 
+@register.filter(name='is_radioselect')
+def is_radioselect(field):
+    return isinstance(field.field.widget, forms.RadioSelect)
+
+
 def silence_without_field(fn):
     def wrapped(field, attr):
         if not field:
