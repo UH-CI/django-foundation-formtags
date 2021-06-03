@@ -18,7 +18,7 @@
 
     {% if field.label %}
             {% if  field|is_radioselect %}
-            <fieldset class="cell fieldset">
+            <fieldset class="cell fieldset{%if field.hide %} hide{%endif%}">
               <legend {% if field.errors %} class="is-invalid-label"{% endif %}>
                 {% else %}
                 <label for="{{ field.auto_id }}"{% if field.errors %} class="is-invalid-label"{% endif %}>
