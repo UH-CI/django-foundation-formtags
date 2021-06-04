@@ -5,6 +5,15 @@
 {% else %}
 <div class="cell">
     {% if field|is_checkbox %}
+       {% if field.help_text %}
+            <small>{{ field.help_text|safe }}</small>
+        {% endif %}
+       {{ field|add_error_class:"is-invalid-input" }}
+
+        {% for error in field.errors %}
+            <small class="form-error is-visible chk">{{ error }}</small>
+        {% endfor %}
+    {% elif field|is_checkbox_multi %}
         <fieldset class="cell fieldset{%if field.hide %} hide{%endif%}">
           <legend {% if field.errors %} class="is-invalid-label"{% endif %}><strong>{{ field.label|safe }}</strong></legend>
     
@@ -41,7 +50,7 @@
             {% endif %}
     {% endif %}
 
-    {% if not field|is_checkbox %}
+    {% if not field|is_checkbox and not field|is_checkbox_multi  %} 
         {% if field.help_text %}
             <small>{{ field.help_text|safe }}</small>
         {% endif %}
@@ -49,9 +58,8 @@
         {% for error in field.errors %}
             <small class="form-error is-visible">{{ error }}</small>
         {% endfor %}
-
     {% endif %}
-            {% if  field|is_radioselect %}
+    {% if  field|is_radioselect %}
 </fieldset>
     {% endif %}
 </div>

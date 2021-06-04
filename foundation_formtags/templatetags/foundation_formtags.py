@@ -31,10 +31,14 @@ def render_field(field):
 
 @register.filter(name='is_checkbox')
 def is_checkbox(field):
-    return isinstance(field.field.widget, CheckboxInput) or isinstance(field.field.widget, CheckboxSelectMultiple)
+    return isinstance(field.field.widget, CheckboxInput)
     #return field.field.widget.__class__.__name__ == CheckboxInput(
     #).__class__.__name__
 
+
+@register.filter(name='is_checkbox_multi')
+def is_checkbox_multi(field):
+    return isinstance(field.field.widget, CheckboxSelectMultiple)
 
 @register.filter(name='is_radioselect')
 def is_radioselect(field):
