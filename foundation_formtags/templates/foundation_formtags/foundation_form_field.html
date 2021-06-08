@@ -4,7 +4,7 @@
     {{ field }}
 {% else %}
 <div class="cell">
-    {% if field|is_checkbox %}
+    {% if field|is_checkbox or field|is_checkbox_multi %}
        {% if field.help_text %}
             <small>{{ field.help_text|safe }}</small>
         {% endif %}
