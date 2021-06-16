@@ -3,7 +3,6 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-{%if field.field.hide %} hide{%endif%}
   {% if  field|is_radioselect or field|is_checkbox_multi %}
   <div class="cell">
   {% else %}
