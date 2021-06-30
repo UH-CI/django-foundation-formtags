@@ -4,9 +4,9 @@
     {{ field }}
 {% else %}
   {% if  field|is_radioselect or field|is_checkbox_multi %}
-  <div class="cell">
+  <div class="cell" id="{{ field.auto_id }}_box">
   {% else %}
-  <div class="cell {%if field.field.hide %} hide{%endif%}">
+  <div class="cell {%if field.field.hide %} hide{%endif%}" id="{{ field.auto_id }}_box">
     {% endif %}
     {% if field|is_checkbox %}
        {% if field.help_text %}
